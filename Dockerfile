@@ -4,6 +4,7 @@ FROM php:8.4-fpm
 RUN apt-get update && apt-get install -y \
     git \
     curl \
+    ca-certificates \
     libpng-dev \
     libjpeg62-turbo-dev \
     libfreetype6-dev \
@@ -56,11 +57,6 @@ RUN npm install && npm run production
 RUN chown -R www-data:www-data /var/www/html \
     && chmod -R 775 /var/www/html/storage \
     && chmod -R 775 /var/www/html/bootstrap/cache
-
-# Cache configs
-RUN php artisan config:cache \
-    && php artisan route:cache \
-    && php artisan view:cache
 
 # Copy Nginx config
 COPY docker/nginx.conf /etc/nginx/sites-available/default
