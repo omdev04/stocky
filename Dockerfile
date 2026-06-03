@@ -38,7 +38,7 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 WORKDIR /var/www/html
 
 # Cache buster - change this to force rebuild
-ARG CACHE_BUST=5
+ARG CACHE_BUST=6
 
 # Copy application files
 COPY . .
