@@ -46,6 +46,7 @@ return [
         'mysql' => [
             'driver' => 'mysql',
             'url' => env('DATABASE_URL'),
+            'dsn' => 'mysql:host=' . env('DB_HOST', '127.0.0.1') . ';port=' . env('DB_PORT', '3306') . ';dbname=' . env('DB_DATABASE', 'forge') . ';ssl-mode=REQUIRED',
             'host' => env('DB_HOST', '127.0.0.1'),
             'port' => env('DB_PORT', '3306'),
             'database' => env('DB_DATABASE', 'forge'),
@@ -59,7 +60,7 @@ return [
             'strict' => true,
             'engine' => null,
             'options' => extension_loaded('pdo_mysql') ? [
-                1014 => env('MYSQL_ATTR_SSL_CA', '/etc/ssl/certs/ca-certificates.crt'), // PDO::MYSQL_ATTR_SSL_CA
+                1014 => '/etc/ssl/certs/ca-certificates.crt',
             ] : [],
         ],
 
