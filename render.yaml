@@ -1,10 +1,9 @@
 services:
   - type: web
     name: zaistock
-    runtime: php
+    runtime: docker
     plan: free
-    buildCommand: chmod +x build.sh && ./build.sh
-    startCommand: php artisan serve --host=0.0.0.0 --port=$PORT
+    dockerfilePath: ./Dockerfile
     envVars:
       - key: APP_NAME
         value: Zaistock
