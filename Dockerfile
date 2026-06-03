@@ -40,7 +40,7 @@ WORKDIR /var/www/html
 COPY . .
 
 # Install PHP dependencies (no-dev for production)
-RUN composer install --no-dev --optimize-autoloader --no-interaction
+RUN composer install --no-dev --optimize-autoloader --no-interaction --ignore-platform-reqs
 
 # Install Node dependencies and build assets
 RUN npm install && npm run production
